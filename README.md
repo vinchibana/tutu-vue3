@@ -1,24 +1,16 @@
-# tutu-vue3
+# Erabbit
 
-## Project setup
-```
-npm install
-```
+## Highlights
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+SKU 前端解决方案，本地线上购物车，第三方登录，支付宝支付，搜索，订单，分类
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Tech stack
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Vue3.0 
+vueuse/core 
+vue-router 
+vuex 
+vuex-persistedstate 
+axios 
+vee-validate 
+power-set
