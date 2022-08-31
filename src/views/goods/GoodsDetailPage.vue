@@ -40,15 +40,23 @@
           </div>
         </div>
 
-        <!-- 相关推荐 -->
+        <!-- 根据当前商品 id 获取相关推荐 -->
         <GoodsRelevant :goodsId="goodsDetail.id" />
         <!-- 商品详情 -->
         <div class="goods-footer">
           <div class="goods-article">
-            <GoodsTab/>
-            <div class="goods-warn"></div>
+            <GoodsTab />
+            <div class="goods-warn">
+              <GoodsWarn />
+            </div>
           </div>
-          <div class="goods-aside"></div>
+
+          <!-- 24热榜 -->
+          <div class="goods-aside">
+            <GoodsHot :type="1" />
+            <GoodsHot :type="2" />
+            <GoodsHot :type="3" />
+          </div>
         </div>
       </div>
     </div>
@@ -67,6 +75,8 @@ import GoodsSku from "@/views/goods/components/GoodsSku";
 import CartButton from "@/components/library/CartButton";
 import GoodsRelevant from "@/views/goods/components/GoodsRelevant";
 import GoodsTab from "@/views/goods/components/GoodsTab";
+import GoodsWarn from "@/views/goods/components/GoodsWarn";
+import GoodsHot from "@/views/goods/components/GoodsHot";
 
 export default {
   name: "GoodsDetail",
@@ -79,7 +89,9 @@ export default {
     GoodsInfo,
     GoodsSku,
     GoodsRelevant,
-    GoodsTab
+    GoodsTab,
+    GoodsWarn,
+    GoodsHot
   },
   setup() {
     const { result: goodsDetail, onSpecChange, count } = useGoods();
