@@ -7,13 +7,15 @@
       @mouseenter="showSubCategory(item)"
       @mouseleave="hideSubCategory(item)"
     >
-      <router-link to="/" @click="hideSubCategory(item)">{{
-        item.name
-      }}</router-link>
+      <router-link
+        :to="`/category/${item.id}`"
+        @click="hideSubCategory(item)"
+        >{{ item.name }}</router-link
+      >
       <div class="layer" :class="{ open: item.open }">
         <ul>
           <li v-for="subItem in item.children" :key="subItem.id">
-            <router-link to="/">
+            <router-link :to="`/category/sub/${subItem.id}`">
               <img :src="subItem.picture" alt="" />
               <p>{{ subItem.name }}</p>
             </router-link>

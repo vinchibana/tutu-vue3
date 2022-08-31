@@ -1,21 +1,18 @@
 <template>
   <div class="home-banner">
-    <Carousel v-if="sliders" :sliders="sliders" autoPlay/>
+    <Carousel v-if="sliders" :sliders="sliders" autoPlay />
   </div>
 </template>
 
 <script>
 import Carousel from "@/components/library/Carousel";
-import { ref } from "vue";
-import { getBanner } from "@/api/home";
+import useBanners from "@/hooks/useBanners";
+
 export default {
   name: "HomeBanner",
   components: { Carousel },
   setup() {
-    const sliders = ref([]);
-    getBanner().then((data) => {
-      sliders.value = data.result;
-    });
+    const sliders = useBanners();
     return { sliders };
   },
 };

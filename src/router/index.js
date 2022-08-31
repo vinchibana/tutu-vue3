@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 const TopCategory = () => import("@/views/category/TopCategory");
 const Home = () => import("@/views/home/Home");
 const SubCategory = () => import("@/views/category/SubCategory");
-
+const GoodsDetail = () => import("@/views/goods/GoodsDetailPage");
 const routes = [
   {
     path: "/",
@@ -15,6 +15,10 @@ const routes = [
   {
     path: "/category/sub/:id",
     component: SubCategory,
+  },
+  {
+    path: "/goods/:id",
+    component: GoodsDetail,
   },
 ];
 
