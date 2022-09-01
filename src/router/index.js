@@ -3,6 +3,8 @@ const TopCategory = () => import("@/views/category/TopCategory");
 const Home = () => import("@/views/home/Home");
 const SubCategory = () => import("@/views/category/SubCategory");
 const GoodsDetail = () => import("@/views/goods/GoodsDetailPage");
+const Cart = () => import("@/views/cart/Cart");
+
 const routes = [
   {
     path: "/",
@@ -19,6 +21,10 @@ const routes = [
   {
     path: "/goods/:id",
     component: GoodsDetail,
+  },
+  {
+    path: "/cart",
+    component: Cart,
   },
 ];
 

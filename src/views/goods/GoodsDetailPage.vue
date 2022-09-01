@@ -34,7 +34,7 @@
             <CartButton
               type="primary"
               :style="{ marginTop: '20px' }"
-              @click="addCart"
+              @click="addToCart"
               >加入购物车</CartButton
             >
           </div>
@@ -94,9 +94,9 @@ export default {
     GoodsHot
   },
   setup() {
-    const { result: goodsDetail, onSpecChange, count } = useGoods();
+    const { result: goodsDetail, onSpecChange, count, addToCart } = useGoods();
     provide("goodsDetail", goodsDetail);
-    return { goodsDetail, onSpecChange, count };
+    return { goodsDetail, onSpecChange, count, addToCart };
   },
 };
 </script>

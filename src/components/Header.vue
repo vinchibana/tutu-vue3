@@ -10,9 +10,10 @@
       </div>
 
       <div class="cart">
-        <a href="#" class="curr">
+        <router-link to="/cart" class="curr">
           <i class="iconfont icon-cart"></i><em>2</em>
-        </a>
+        </router-link>
+
       </div>
     </div>
   </header>

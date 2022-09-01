@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import City from "@/components/library/City";
+import City from "@/components/library/CityService";
 export default {
   name: "GoodsInfo",
   components: {City},

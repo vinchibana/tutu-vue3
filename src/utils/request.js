@@ -33,7 +33,7 @@ instance.interceptors.response.use(
   }
 );
 
-export default (url, method, submitData) => {
+export default (url, method, submitData, option) => {
   return instance({
     url,
     method,
@@ -41,5 +41,6 @@ export default (url, method, submitData) => {
     // 2. 如果不是get请求  需要使用data来传递submitData   请求体传参
     // [] 设置一个动态的key, 写js表达式，js表达式的执行结果当作KEY
     [method.toLowerCase() === "get" ? "params" : "data"]: submitData,
+    option,
   });
 };

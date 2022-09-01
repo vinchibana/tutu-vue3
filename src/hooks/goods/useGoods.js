@@ -2,6 +2,7 @@ import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import { useStore } from "vuex";
 import { ref } from "vue";
 import { getGoodsDetailById } from "@/api/goods";
+import MsgService from "@/components/library/MsgService";
 
 export default function useGoods() {
   const route = useRoute();
@@ -26,9 +27,8 @@ export default function useGoods() {
     result.value.currentSelectedSkuText = data.specsText;
   };
 
-  const addCart = () => {
+  const addToCart = () => {
     if (!result.value.currentSelectedSkuId) {
-
     }
     const goods = {
       id: result.value.id, // 商品id
@@ -44,9 +44,17 @@ export default function useGoods() {
       isEffective: true, //如果商品选择了规格，该商品就一定是有效商品，因为能够选择的规格都是有库存的
     };
 
-    store.dispatch('cart/addGoodsToCart',goods)
-  }
+    store
+      .dispatch("cart/addGoodsToCart", goods)
+      .then(() => {
+        MsgService({ type: "success", text: "商品已经成功被添加到购物车中" });
+      })
+      .catch((error) => {
+        const msg = error.err.response.data.message;
+        MsgService({ type: "success", text: msg });
+      });
+  };
 
-  const count = ref(1)
-  return { result, onSpecChange ,count};
+  const count = ref(1);
+  return { result, onSpecChange, count, addToCart };
 }

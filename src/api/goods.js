@@ -17,3 +17,26 @@ export const getGoodsDetailById = (id) => {
 export function getRelevantGoods(id, limit = 16) {
   return request("/goods/relevant", "get", { id, limit });
 }
+
+/**
+ * 获取商品评论数据
+ * @param id 商品id
+ * @returns {*}
+ */
+export function getCommentInfo(id) {
+  return request(
+    `https://mock.boxuegu.com/mock/1175/goods/${id}/evaluate`,
+    "get",
+    {
+      id,
+    }
+  );
+}
+
+export function getCommentList(id) {
+  return request(
+    `https://mock.boxuegu.com/mock/1175/goods/${id}/evaluate/page`,
+    "get",
+    { id }
+  );
+}
