@@ -4,7 +4,7 @@ const Home = () => import("@/views/home/Home");
 const SubCategory = () => import("@/views/category/SubCategory");
 const GoodsDetail = () => import("@/views/goods/GoodsDetailPage");
 const Cart = () => import("@/views/cart/Cart");
-
+const Login = () => import('@/views/login/Login')
 const routes = [
   {
     path: "/",
@@ -26,6 +26,10 @@ const routes = [
     path: "/cart",
     component: Cart,
   },
+  {
+    path: '/login',
+    component:Login,
+  }
 ];
 
 const router = createRouter({

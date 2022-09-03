@@ -7,7 +7,7 @@
           <img
             v-if="value.picture"
             :src="value.picture"
-            alt=""
+            :alt="value.name"
             :class="{ selected: value.selected, disabled: value.disabled }"
             @click="updateSpecSelected(spec, value)"
           />

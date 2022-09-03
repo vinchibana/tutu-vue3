@@ -5,6 +5,12 @@
 import MsgService from "@/components/library/MsgService";
 import directiveLazy from "@/components/directives/lazy";
 
+// require.context(
+//   directory,
+//   (useSubdirectories = true),
+//   (regExp = /^\.\/.*$/),
+//   (mode = 'sync')
+// );
 const importFn = require.context("./", false, /\.vue$/);
 const keys = importFn.keys();
 
