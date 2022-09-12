@@ -104,6 +104,19 @@
         <button type="submit" class="btn">登录</button>
       </template>
     </div>
+
+    <div class="action">
+      <a :href="loginUrl">
+        <img
+          src="https://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_7.png"
+          alt=""
+        />
+      </a>
+      <div class="url">
+        <a href="javascript:">忘记密码</a>
+        <a href="javascript:">免费注册</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -116,18 +129,22 @@ export default {
   name: "LoginForm",
   components: {},
 
+  // 账号+密码 / 手机号+验证码 两种验证方式
   setup() {
     const isMsgLogin = ref(false);
     const proxy = getCurrentInstance();
     const { onAccountFormSubmit, ...accountFormValid } =
       useAccountFormValidate();
-    const { onMobileFormSubmit, ...mobileFormValid } = useMobileFormValidate(proxy);
+    const { onMobileFormSubmit, ...mobileFormValid } =
+      useMobileFormValidate(proxy);
 
     return {
       isMsgLogin,
       onAccountFormSubmit,
       ...accountFormValid,
+      onMobileFormSubmit,
       ...mobileFormValid,
+      loginUrl: process.env.VUE_APP_QQ_LOGIN,
     };
   },
 };

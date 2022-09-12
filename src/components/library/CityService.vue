@@ -28,7 +28,7 @@ import axios from "axios";
 import { onClickOutside } from "@vueuse/core";
 
 export default {
-  name: "City",
+  name: "CityService",
   props: {
     location: {
       type: String,

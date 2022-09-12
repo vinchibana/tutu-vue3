@@ -17,20 +17,20 @@
         >
       </nav>
 
-      <LoginForm v-if="activeName === 'account'"/>
+      <LoginForm v-if="activeName === 'account'" />
       <div class="qrcode-box" v-if="activeName === 'qrcode'">
         <img src="@/assets/images/qrcode.jpg" alt="" />
       </div>
     </div>
   </section>
-  <LoginFooter/>
+  <LoginFooter />
 </template>
 
 <script>
 import LoginHeader from "@/views/login/components/LoginHeader";
 import LoginFooter from "@/views/login/components/LoginFooter";
 import LoginForm from "@/views/login/components/LoginForm";
-import { ref } from "vue";
+import {  ref } from "vue";
 
 export default {
   name: "Login",

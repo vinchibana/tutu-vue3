@@ -2,6 +2,7 @@ import axios from "axios";
 import store from "@/store";
 import router from "@/router";
 
+export const PAY_CALLBACK = process.env.VUE_APP_PAY_CALLBACL;
 export const baseURL = "https://pcapi-xiaotuxian-front-devtest.itheima.net/";
 const instance = axios.create({
   baseURL,

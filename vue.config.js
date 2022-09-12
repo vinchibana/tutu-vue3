@@ -16,4 +16,7 @@ module.exports = defineConfig({
       ],
     },
   },
+  // chainWebpack: (config) => {
+  //   config.devServer.disableHostCheck(true);
+  // },
 });

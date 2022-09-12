@@ -15,7 +15,7 @@ export default {
 
   mutations: {
     setUser(state, payload) {
-      state.profile.account = payload;
+      state.profile = payload;
     },
   },
 };

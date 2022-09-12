@@ -1,19 +1,26 @@
-<template v-if="profile.token">
+<template>
   <nav class="top-nav">
     <div class="container">
       <ul>
-        <li>
-          <a href="javascript:"
-            ><i class="iconfont icon-user">{{ profile.account }}</i></a
-          >
-        </li>
-        <li><a href="javascript:">退出登录</a></li>
-        <li><a href="javascript:">请先登录</a></li>
-        <li><a href="javascript:">免费注册</a></li>
-        <li><a href="javascript:">我的订单</a></li>
-        <li><a href="javascript:">会员中心</a></li>
-        <li><a href="javascript:">帮助中心</a></li>
-        <li><a href="javascript:">关于我们</a></li>
+        <template v-if="profile.token">
+          <li>
+            <router-link to="/member/home">
+              <i class="iconfont icon-user">{{ profile.account }}</i>
+            </router-link>
+          </li>
+          <li><router-link to="/login">退出登录</router-link></li>
+        </template>
+        <tempalte v-else>
+          <li>
+            <router-link to="/login">请先登录</router-link>
+          </li>
+          <li><router-link to="/login">免费注册</router-link></li>
+        </tempalte>
+
+        <li><router-link to="/login">我的订单</router-link></li>
+        <li><router-link to="/login">会员中心</router-link></li>
+        <li><router-link to="/login">帮助中心</router-link></li>
+        <li><router-link to="/login">关于我们</router-link></li>
         <li>
           <a href="javascript:"><i class="iconfont icon-phone"></i></a>
         </li>

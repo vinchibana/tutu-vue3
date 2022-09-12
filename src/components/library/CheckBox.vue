@@ -1,5 +1,5 @@
 <template>
-  <div class="xtx-checkbox">
+  <div class="xtx-checkbox" @click="toggle">
     <i class="iconfont icon-checked" v-if="isChecked" @click="toggle"></i>
     <i class="iconfont icon-unchecked" v-else></i>
     <span v-if="$slots.default"><slot /></span>
