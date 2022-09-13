@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import authGuard from "@/router/authGuard";
 const TopCategory = () => import("@/views/category/TopCategory");
 const Home = () => import("@/views/home/Home");
 const SubCategory = () => import("@/views/category/SubCategory");
@@ -60,7 +61,12 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  scrollBehavior() {
+    return { top: 0 };
+  },
+  // 定义【模糊匹配】和【精确匹配】激活类名
+  linkActiveClass: "fuzzy-active",
+  linkExactActiveClass: "exact-active",
 });
-
-router.beforeEach()
+router.beforeEach(authGuard);
 export default router;

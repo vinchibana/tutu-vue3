@@ -9,6 +9,7 @@
           <span>收<i />货<i />人：</span>{{ finalAddress.receiver }}
         </li>
         <li>
+          <!-- 隐藏手机号中间四位 -->
           <span>联系方式</span
           >{{
             finalAddress.contact.replace(/(\d{3})(\d{4})(\d{4})/g, "$1****$3")
@@ -26,7 +27,12 @@
       <CartButton class="btn" @click="onAddAddress">添加地址</CartButton>
     </div>
 
-    <EditAddress ></EditAddress>
+    <!-- 两个 Vue 实例，修改地址和添加地址对话框用-->
+    <EditAddress ref="editAddressInstance"></EditAddress>
+    <SwitchAddress
+      ref="selectAddressInstance"
+      @onAddressSwitched="onAddressSwitched"
+    ></SwitchAddress>
   </div>
 </template>
 
@@ -40,14 +46,14 @@ export default {
   setup() {
     const {
       selectAddressInstance,
+      editAddressInstance,
       onSwitchAddress,
       getAddresses,
-      editAddressInstance,
       onAddAddress,
     } = useCheckoutAddress();
 
     const {
-      addressToAdd,
+      addresses,
       finalAddress,
       onAddressListChanged,
       onAddressSwitched,
@@ -56,11 +62,11 @@ export default {
 
     return {
       selectAddressInstance,
+      editAddressInstance,
       onSwitchAddress,
       getAddresses,
-      editAddressInstance,
       onAddAddress,
-      addressToAdd,
+      addresses,
       finalAddress,
       onAddressListChanged,
       onAddressSwitched,

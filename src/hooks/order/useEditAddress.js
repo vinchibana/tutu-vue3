@@ -5,15 +5,17 @@ import MsgService from "@/components/library/MsgService";
 export default function useEditAddress(emit) {
   const visible = ref(false);
   const location = ref("");
+  // 包含所有字段的地址对象
   const address = ref({
+    // 地址字段
     provinceCode: "",
     cityCode: "",
     countyCode: "",
-    receiver: "",
-    contact: "",
-    address: "",
-    postalCode: "",
-    addressTags: "",
+    receiver: "", // 收货人
+    contact: "", // 手机号
+    address: "", // 详细地址
+    postalCode: "", // 邮政编码
+    addressTags: "", // 地址标签
     isDefault: false,
   });
 

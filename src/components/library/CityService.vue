@@ -1,12 +1,15 @@
+<!-- 城市选择菜单组件 -->
 <template>
   <div class="xtx-city" ref="target">
     <div class="select" @click="toggle" :class="{ active: visible }">
+      <!-- 占位文字与实际选择地址之间切换显示 -->
       <span class="placeholder" v-if="!location">请选择配送地址</span>
       <span class="value" v-else>{{ location }}</span>
     </div>
 
     <div class="option" v-if="visible">
       <template v-if="list">
+        <!-- 点击行政区划名触发 selectCityData 进入下一级-->
         <span
           class="ellipsis"
           v-for="item in list"
@@ -38,10 +41,11 @@ export default {
   setup(props, { emit }) {
     // 下拉菜单是否显示
     const visible = ref(false);
-    // 下拉元素
+    // 下拉菜单元素，元素外点击隐藏菜单
     const target = ref(null);
-
     const cityData = ref(null);
+
+    // 点开菜单时获取城市列表数据
     const show = async () => {
       cityData.value = await getCityData();
       visible.value = true;
@@ -57,10 +61,13 @@ export default {
       visible.value ? hide() : show();
     };
 
+    // 点击城市选择菜单外的区域时将菜单隐藏
     onClickOutside(target, () => {
       hide();
     });
 
+    // reactive 更适合定义复杂的数据类型（json/arr），可以深层解包
+    // ref 适合定义基本数据类型（可接收基本数据类型和对象）
     const selectedCityData = reactive({
       provinceCode: "",
       cityCode: "",
@@ -72,6 +79,8 @@ export default {
     });
 
     const selectCityData = (data) => {
+      // 将用户选择的结果赋值给此前定义的 reactive - selectedCityData
+      // code 用于计算渲染下一级，name 用于拼接显示名称
       if (data.level === 0) {
         selectedCityData.provinceCode = data.code;
         selectedCityData.provinceName = data.name;
@@ -85,6 +94,8 @@ export default {
       }
     };
 
+    // 循环展示三级列表
+    // 计算属性 list 依赖响应式状态 cityData 和 selectedCityData
     const list = computed(() => {
       let list = cityData.value;
       if (selectedCityData.provinceCode) {
@@ -98,13 +109,14 @@ export default {
         ).areaList;
       }
       if (selectedCityData.countyCode) {
+        // 选择到最后一级，触发 onCityChanged 事件
         emit("onCityChanged", { ...selectedCityData });
         list = cityData.value;
         hide();
       }
       return list;
     });
-    return { visible, target, selectedCityData, selectCityData, list,toggle };
+    return { visible, target, selectedCityData, selectCityData, list, toggle };
   },
 };
 window.cityData = null;

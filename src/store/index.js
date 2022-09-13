@@ -14,7 +14,7 @@ export default createStore({
     user,
     category,
   },
-  // 使用 vuex-persistedstate 将状态持久化至 localStorage
+  // vuex-persistedstate 将 user、cart 两部分持久化至 localStorage
   plugins: [
     createPersistedState({
       key: "tutu-state",

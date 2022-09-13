@@ -7,12 +7,13 @@
           <BreadItem path="/cart">购物车</BreadItem>
           <BreadItem>填写订单</BreadItem>
         </BreadCrumb>
-
+        <!-- 收货地址 -->
         <div class="wrapper">
           <h3 class="box-title">收货地址</h3>
           <div class="box-body">
-            <CheckoutAddress ref="checkoutAddressInstance"/>
+            <CheckoutAddress ref="checkoutAddressInstance" />
           </div>
+          <!-- 商品信息 -->
           <h3 class="box-title">商品信息</h3>
           <div class="box-body">
             <table class="goods">
@@ -103,7 +104,7 @@ import Layout from "@/components/Layout";
 import useCheckout from "@/hooks/order/useCheckout";
 export default {
   name: "Checkout",
-  components: { Layout,CheckoutAddress },
+  components: { Layout, CheckoutAddress },
   setup() {
     const { order, checkoutAddressInstance, onSubmitOrder } = useCheckout();
     return { order, checkoutAddressInstance, onSubmitOrder };

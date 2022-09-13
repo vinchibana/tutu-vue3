@@ -1,8 +1,10 @@
+<!-- 修改/添加 地址按钮共用组件 弹窗 -->
 <template>
   <Dialog
     v-model:visible="visible"
     :title="`${address?.id ? '修改' : '添加'}收货地址`"
   >
+    <!-- 地址输入区域 -->
     <template v-slot:default>
       <div class="address-edit">
         <div class="xtx-form">
@@ -80,6 +82,7 @@
       </div>
     </template>
 
+    <!-- 按钮区域 -->
     <template v-slot:footer>
       <CartButton
         @click="visible = false"
@@ -97,7 +100,6 @@ import useEditAddress from "@/hooks/order/useEditAddress";
 
 export default {
   name: "EditAddress",
-  components: {},
   setup(props, { emit }) {
     const { visible, location, address, onConfirmAddress, onCityChanged } =
       useEditAddress(emit);

@@ -9,6 +9,7 @@ export default {
         account: "",
         mobile: "",
         token: "",
+        redirectURL: "",
       },
     };
   },
@@ -16,6 +17,12 @@ export default {
   mutations: {
     setUser(state, payload) {
       state.profile = payload;
+    },
+    setToken(state, payload = "") {
+      state.profile.token = payload;
+    },
+    setRedirectURL(state, payload = "") {
+      state.redirectURL = payload;
     },
   },
 };

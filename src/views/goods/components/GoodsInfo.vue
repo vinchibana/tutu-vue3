@@ -1,9 +1,9 @@
 <template>
-  <p class="g-name">{{goods.name}}</p>
-  <p class="g-desc">{{goods.desc}}</p>
+  <p class="g-name">{{ goods.name }}</p>
+  <p class="g-desc">{{ goods.desc }}</p>
   <p class="g-price">
-    <span>{{goods.price}}</span>
-    <span>{{goods.oldPrice}}</span>
+    <span>{{ goods.price }}</span>
+    <span>{{ goods.oldPrice }}</span>
   </p>
   <div class="g-service">
     <dl>
@@ -12,7 +12,9 @@
     </dl>
     <dl>
       <dt>配送</dt>
-      <dd>至 <City :location="location" @onCityChanged="cityChanged" /></dd>
+      <dd>
+        至 <CityService :location="location" @onCityChanged="cityChanged" />
+      </dd>
     </dl>
     <dl>
       <dt>服务</dt>
@@ -27,15 +29,26 @@
 </template>
 
 <script>
-import City from "@/components/library/CityService";
+import CityService from "@/components/library/CityService";
+import { ref } from "vue";
 export default {
   name: "GoodsInfo",
-  components: {City},
+  components: { CityService },
   props: {
     goods: {
       type: Object,
       default: () => ({}),
     },
+  },
+  setup() {
+    const location = ref("");
+    // 接收来自 CityService 子组件的自定义事件传递的 data
+    const cityChanged = (data) => {
+      // location 获得值后通过 props 传递回 CityService
+      location.value = data.location;
+    };
+
+    return { location, cityChanged };
   },
 };
 </script>
