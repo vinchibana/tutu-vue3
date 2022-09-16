@@ -10,6 +10,7 @@ export default function useCheckout() {
   const store = useStore();
 
   const order = ref(null);
+  // checkoutAddress 子组件实例，通过 ref 唤起
   const checkoutAddressInstance = ref(null);
 
   // 路由中有 id 时，据此创建订单
@@ -25,11 +26,13 @@ export default function useCheckout() {
   }
 
   const onSubmitOrder = () => {
+    //
     const orderParams = {
       goods: order.value.goods.map((item) => ({
         skuId: item.skuId,
         count: item.count,
       })),
+      // 从 checkoutAddress Vue 实例当中获取当前 address
       addressId: checkoutAddressInstance.value.finalAddress?.id,
       deliveryTimeType: 1,
       payType: 1,

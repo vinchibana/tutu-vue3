@@ -2,6 +2,7 @@
   <Dialog title="更换收货地址" v-model:visible="visible">
     <template v-slot:default>
       <div class="address-switch">
+        <!-- active 伪类 hover 时高亮-->
         <div
           class="text item"
           :class="{ active: item.id === activeAddressId }"
@@ -29,17 +30,18 @@
       >
         取消
       </CartButton>
-    </template> </Dialog
-  >l
+    </template>
+  </Dialog>
 </template>
 
 <script>
-import useSwitchAddress from "@/hooks/order/useSwitchAddress";
+import { ref } from "vue";
 
 export default {
   name: "SwitchAddress",
   components: {},
   props: {
+    // 通过 getAddress 获取到的 addresses
     list: {
       type: Array,
       default: () => [],
@@ -50,7 +52,13 @@ export default {
     },
   },
   setup(props, { emit }) {
-    const { visible, onSwitchAddress } = useSwitchAddress(emit);
+    const visible = ref(false);
+    const onSwitchAddress = (address) => {
+      // 通过自定义事件触发父组件方法，将参数 address 赋值给 userSelectedAddress
+      emit("onAddressSwitched", address);
+      visible.value = false;
+    };
+
     return { visible, onSwitchAddress };
   },
 };

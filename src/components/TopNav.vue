@@ -8,19 +8,19 @@
               <i class="iconfont icon-user">{{ profile.account }}</i>
             </router-link>
           </li>
-          <li><router-link to="/login">退出登录</router-link></li>
+          <li><router-link to="/logout">退出登录</router-link></li>
         </template>
         <tempalte v-else>
           <li>
             <router-link to="/login">请先登录</router-link>
           </li>
-          <li><router-link to="/login">免费注册</router-link></li>
+          <li><router-link to="/register">免费注册</router-link></li>
         </tempalte>
 
-        <li><router-link to="/login">我的订单</router-link></li>
-        <li><router-link to="/login">会员中心</router-link></li>
-        <li><router-link to="/login">帮助中心</router-link></li>
-        <li><router-link to="/login">关于我们</router-link></li>
+        <li><router-link to="/member/order">我的订单</router-link></li>
+        <li><router-link to="/member/home">会员中心</router-link></li>
+        <li><router-link to="/">帮助中心</router-link></li>
+        <li><router-link to="/">关于我们</router-link></li>
         <li>
           <a href="javascript:"><i class="iconfont icon-phone"></i></a>
         </li>

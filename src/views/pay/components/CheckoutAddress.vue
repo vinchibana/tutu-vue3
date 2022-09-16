@@ -27,10 +27,16 @@
       <CartButton class="btn" @click="onAddAddress">添加地址</CartButton>
     </div>
 
-    <!-- 两个 Vue 实例，修改地址和添加地址对话框用-->
-    <EditAddress ref="editAddressInstance"></EditAddress>
+    <!-- 两个 Vue 实例，修改地址和添加地址对话框用，通过 ref visible=true 唤起-->
+    <EditAddress
+      ref="editAddressInstance"
+      @onAddressChanged="onAddressListChanged"
+    ></EditAddress>
+    <!-- 切换地址 -->
     <SwitchAddress
-      ref="selectAddressInstance"
+      :list="addresses"
+      :activeAddressId="finalAddress?.id"
+      ref="switchAddressInstance"
       @onAddressSwitched="onAddressSwitched"
     ></SwitchAddress>
   </div>
@@ -45,7 +51,7 @@ export default {
   components: { SwitchAddress, EditAddress },
   setup() {
     const {
-      selectAddressInstance,
+      switchAddressInstance,
       editAddressInstance,
       onSwitchAddress,
       getAddresses,
@@ -61,7 +67,7 @@ export default {
     } = getAddresses();
 
     return {
-      selectAddressInstance,
+      switchAddressInstance,
       editAddressInstance,
       onSwitchAddress,
       getAddresses,

@@ -52,7 +52,7 @@
 
   <Dialog title="正在支付..." v-model:visible="isPaying">
     <div class="pay-wait">
-      <img src="@/assets/images/load.gif" alt="">
+      <img src="@/assets/images/load.gif" alt="" />
       <div v-if="info">
         <p>如果支付成功：</p>
         <router-link :to="`/member/order/${info.id}`">查看订单</router-link>
@@ -65,14 +65,36 @@
 
 <script>
 import Layout from "@/components/Layout";
-import usePay from "@/hooks/order/usePay";
+import { useRoute } from "vue-router";
+import { ref } from "vue";
+import countdown from "@/utils/countdown";
+import { getOrderInfoById } from "@/api/order";
+import { baseURL, PAY_CALLBACK } from "@/utils/request";
+import dayjs from "dayjs";
 
 export default {
   name: "Pay",
   components: { Layout },
   setup() {
-    const { count, info, dayjs, payUrl, isPaying } = usePay();
-    return { count, info, dayjs, payUrl, isPaying };
+    const route = useRoute();
+    // 订单信息
+    const info = ref(null);
+    const { count, start } = countdown();
+
+    getOrderInfoById(route.query.orderId).then((data) => {
+      info.value = data.result;
+      console.log(info.value);
+      console.log(info.value.skus);
+      // 支付倒计时
+      start(data.result.countdown);
+    });
+
+    const redirectUrl = encodeURIComponent(PAY_CALLBACK);
+    // 后端处理
+    const payUrl = `${baseURL}/pay/aliPay?orderId=${route.query.orderId}&redirect=${redirectUrl}`;
+    const isPaying = ref(false);
+
+    return { info, count, payUrl, isPaying, dayjs };
   },
 };
 </script>
