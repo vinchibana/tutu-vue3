@@ -17,6 +17,8 @@
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0",
+    "msw": "^0.36.3",
+    "@faker-js/faker": "^7.5.0",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
@@ -37,5 +39,8 @@
     "prettier": "^2.4.1",
     "style-resources-loader": "^1.4.1",
     "vue-cli-plugin-style-resources-loader": "~0.1.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

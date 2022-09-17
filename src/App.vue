@@ -4,9 +4,13 @@
 
 <script>
 
+import request from "@/utils/request";
+
 export default {
   setup() {
-
+     request("/message",'get').then((res) => {
+      console.log("hello msw", res);
+    });
   },
 };
 </script>
