@@ -9,7 +9,7 @@
           :goods="goods"
         ></GoodsItem>
       </MemberPanel>
-      <GoodsRelevant/>
+      <GoodsRelevant />
     </div>
   </MemberLayout>
 </template>
@@ -24,7 +24,13 @@ import { ref } from "vue";
 import { getCollection } from "@/api/member";
 export default {
   name: "Member",
-  components: { GoodsRelevant,MemberLayout, MemberOverview, MemberPanel, GoodsItem },
+  components: {
+    GoodsRelevant,
+    MemberLayout,
+    MemberOverview,
+    MemberPanel,
+    GoodsItem,
+  },
   setup() {
     const collection = ref(null);
     getCollection({ pageSize: 4 }).then((data) => {

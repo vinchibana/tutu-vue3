@@ -1,52 +1,62 @@
 <template>
-  <nav class="top-nav">
+  <nav class="app-top-nav">
     <div class="container">
       <ul>
-        <template v-if="profile.token">
+        <template v-if="user.profile.token">
           <li>
-            <router-link to="/member/home">
-              <i class="iconfont icon-user">{{ profile.account }}</i>
-            </router-link>
+            <RouterLink to="/member/home">
+              <i class="iconfont icon-user"></i>{{ user.profile.account }}
+            </RouterLink>
           </li>
-          <li><router-link to="/logout">退出登录</router-link></li>
+          <li><a href="javascript:" @click="logout(this)">退出登录</a></li>
         </template>
-        <tempalte v-else>
-          <li>
-            <router-link to="/login">请先登录</router-link>
-          </li>
-          <li><router-link to="/register">免费注册</router-link></li>
-        </tempalte>
-
-        <li><router-link to="/member/order">我的订单</router-link></li>
-        <li><router-link to="/member/home">会员中心</router-link></li>
-        <li><router-link to="/">帮助中心</router-link></li>
-        <li><router-link to="/">关于我们</router-link></li>
+        <template v-else>
+          <li><RouterLink to="/login">请先登录</RouterLink></li>
+          <li><a href="javascript:">免费注册</a></li>
+        </template>
+        <li><a href="javascript:">我的订单</a></li>
+        <li><a href="javascript:">会员中心</a></li>
+        <li><a href="javascript:">帮助中心</a></li>
+        <li><a href="javascript:">关于我们</a></li>
         <li>
-          <a href="javascript:"><i class="iconfont icon-phone"></i></a>
+          <a href="javascript:"><i class="iconfont icon-phone"></i>手机版</a>
         </li>
       </ul>
     </div>
   </nav>
 </template>
-
 <script>
+// 导入vuex
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
-  name: "top-nav",
+  name: "TopNav",
   setup() {
+    // 使用vuex
     const store = useStore();
-    const profile = computed(() => {
-      return store.state.user.profile;
-    });
-    return { profile };
+    // 使用router
+    const router = useRouter();
+    // 获取用户信息
+    const user = store.state["user"];
+
+    const logout = (instance) => {
+      store.commit("user/setUser", {}); //清空用户信息
+      store.commit("cart/setCart", []); //清空购物车
+      router.push("/login").then(() => {
+        instance.$message({ type: "success", text: "退出成功" });
+      });
+    };
+
+    return {
+      user,
+      logout,
+    };
   },
 };
 </script>
-
 <style scoped lang="less">
-.top-nav {
+.app-top-nav {
   background: #333;
   ul {
     display: flex;

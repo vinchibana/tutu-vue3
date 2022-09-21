@@ -1,17 +1,10 @@
 <template>
-  <router-view />
+  <router-view></router-view>
 </template>
 
 <script>
-
-import request from "@/utils/request";
-
 export default {
-  setup() {
-     request("/message",'get').then((res) => {
-      console.log("hello msw", res);
-    });
-  },
+  setup() {},
 };
 </script>
 <style lang="less">

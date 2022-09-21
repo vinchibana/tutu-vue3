@@ -9,7 +9,7 @@
       >
       <a
         href="javascript:"
-        @click="activeComponentName === 'GoodsComment'"
+        @click="activeComponentName = 'GoodsComment'"
         :class="{ active: activeComponentName === 'GoodsComment' }"
         >商品评价 <span>({{ goodsDetail.commentCount }}+)</span></a
       >

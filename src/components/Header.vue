@@ -13,7 +13,6 @@
         <router-link to="/cart" class="curr">
           <i class="iconfont icon-cart"></i><em>2</em>
         </router-link>
-
       </div>
     </div>
   </header>
@@ -23,8 +22,7 @@
 import HeaderNav from "@/components/HeaderNav";
 export default {
   name: "Header",
-  components: {HeaderNav},
-
+  components: { HeaderNav },
 };
 </script>
 
@@ -83,7 +81,7 @@ export default {
         color: #fff;
         font-size: 12px;
         border-radius: 10px;
-        font-family: Arial,serif;
+        font-family: Arial, serif;
       }
     }
   }

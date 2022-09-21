@@ -3,12 +3,12 @@
     <div class="container">
       <HomeCategory />
       <HomeBanner />
-      <HomeNew />
-      <HomeHot />
-      <HomeBrand />
-      <HomeProducts/>
-      <HomeSpecial />
     </div>
+    <HomeNew />
+    <HomeHot />
+    <HomeBrand />
+    <HomeProducts />
+    <HomeSpecial />
   </Layout>
 </template>
 
@@ -31,7 +31,7 @@ export default {
     HomeBanner,
     HomeNew,
     HomeSpecial,
-    HomeProducts
+    HomeProducts,
   },
 };
 </script>
