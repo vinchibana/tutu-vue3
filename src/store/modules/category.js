@@ -31,6 +31,7 @@ export default {
   },
 
   actions: {
+    // Layout 里调用，每个页面都执行
     async getCategoryList({ commit }) {
       const { result } = await getAllCategory();
       // 给一级分类添加控制二级分类显示隐藏的数据 open

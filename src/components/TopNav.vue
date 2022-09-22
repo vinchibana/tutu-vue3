@@ -14,8 +14,8 @@
           <li><RouterLink to="/login">请先登录</RouterLink></li>
           <li><a href="javascript:">免费注册</a></li>
         </template>
-        <li><a href="javascript:">我的订单</a></li>
-        <li><a href="javascript:">会员中心</a></li>
+        <li><router-link to="/member/order">我的订单</router-link></li>
+        <li><router-link to="/member/home">会员中心</router-link></li>
         <li><a href="javascript:">帮助中心</a></li>
         <li><a href="javascript:">关于我们</a></li>
         <li>

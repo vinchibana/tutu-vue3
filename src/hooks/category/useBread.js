@@ -1,3 +1,4 @@
+// 计算商品分类页面面包屑路径值
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
