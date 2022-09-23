@@ -13,6 +13,7 @@
         </BreadCrumb>
 
         <SubFilter @onFilterChanged="onFilterSortChanged" />
+        <SubSort />
         <div class="goods-list">
           <GoodsList v-if="goods" :goods="goods.items" />
         </div>
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+import SubSort from "@/views/category/components/SubSort";
 import SubFilter from "@/views/category/components/SubFilter";
 import Layout from "@/components/Layout";
 import useGoods from "@/hooks/category/useGoods";
@@ -29,7 +31,7 @@ import useBread from "@/hooks/category/useBread";
 import GoodsList from "@/views/category/components/GoodsList";
 export default {
   name: "SubCategory",
-  components: { Layout, GoodsList, SubFilter },
+  components: { Layout, GoodsList, SubFilter, SubSort },
   setup() {
     const {
       result: goods,
