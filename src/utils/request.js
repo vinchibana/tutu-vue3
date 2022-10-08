@@ -4,7 +4,7 @@ import router from "@/router";
 
 export const PAY_CALLBACK = process.env.VUE_APP_PAY_CALLBACK;
 export const baseURL = "https://pcapi-xiaotuxian-front-devtest.itheima.net";
-// export const baseURL = "https://apipc-xiaotuxian-front.itheima.net/";
+//export const baseURL = "https://apipc-xiaotuxian-front.itheima.net/";
 
 const instance = axios.create({
   baseURL,

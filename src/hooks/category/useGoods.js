@@ -49,5 +49,11 @@ export default function useGoods() {
     };
   });
 
-  return { result, loading, finished, getData, onFilterSortChanged };
+  const loadMore = () => {
+    reqParams.value = {
+      ...reqParams.value,
+      page: ++reqParams.value.page,
+    };
+  };
+  return { result, loading, finished, getData, onFilterSortChanged, loadMore };
 }

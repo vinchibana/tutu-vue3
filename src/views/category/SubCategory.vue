@@ -13,9 +13,14 @@
         </BreadCrumb>
 
         <SubFilter @onFilterChanged="onFilterSortChanged" />
-        <SubSort />
+        <SubSort @onSortParamsChanged="onFilterSortChanged" />
         <div class="goods-list">
           <GoodsList v-if="goods" :goods="goods.items" />
+          <InfiniteLoad
+            :loading="loading"
+            :finished="finished"
+            @infinite="loadMore"
+          />
         </div>
       </div>
     </div>
@@ -38,6 +43,7 @@ export default {
       loading,
       finished,
       onFilterSortChanged,
+      loadMore,
     } = useGoods();
 
     return {
@@ -47,6 +53,7 @@ export default {
       loading,
       finished,
       onFilterSortChanged,
+      loadMore,
     };
   },
 };
